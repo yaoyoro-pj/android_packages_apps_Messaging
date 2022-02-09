@@ -129,30 +129,26 @@ public final class ContactRecipientAdapter extends BaseRecipientAdapter {
                         new Cursor[]{personalFilterEmailsCursor, personalFilterPhonesCursor});
                 final CursorResult cursorResult =
                         new CursorResult(personalCursor, false /* sorted */);
-                if (OsUtil.isAtLeastN()) {
-                    // Including enterprise result starting from N.
-                    final Cursor enterpriseFilterPhonesCursor = ContactUtil.filterPhonesEnterprise(
-                            getContext(), searchText).performSynchronousQuery();
-                    final Cursor enterpriseFilterEmailsCursor = ContactUtil.filterEmailsEnterprise(
-                            getContext(), searchText).performSynchronousQuery();
-                    final Cursor enterpriseCursor = new MergeCursor(
-                            new Cursor[]{enterpriseFilterEmailsCursor,
-                                    enterpriseFilterPhonesCursor});
-                    cursorResult.enterpriseCursor = enterpriseCursor;
-                }
+                // Including enterprise result starting from N.
+                final Cursor enterpriseFilterPhonesCursor = ContactUtil.filterPhonesEnterprise(
+                        getContext(), searchText).performSynchronousQuery();
+                final Cursor enterpriseFilterEmailsCursor = ContactUtil.filterEmailsEnterprise(
+                        getContext(), searchText).performSynchronousQuery();
+                final Cursor enterpriseCursor = new MergeCursor(
+                        new Cursor[]{enterpriseFilterEmailsCursor,
+                                enterpriseFilterPhonesCursor});
+                cursorResult.enterpriseCursor = enterpriseCursor;
                 return cursorResult;
             } else {
                 final Cursor personalFilterDestinationCursor = ContactUtil
                         .filterDestination(getContext(), searchText).performSynchronousQuery();
                 final CursorResult cursorResult = new CursorResult(personalFilterDestinationCursor,
                         true);
-                if (OsUtil.isAtLeastN()) {
-                    // Including enterprise result starting from N.
-                    final Cursor enterpriseFilterDestinationCursor = ContactUtil
-                            .filterDestinationEnterprise(getContext(), searchText)
-                            .performSynchronousQuery();
-                    cursorResult.enterpriseCursor = enterpriseFilterDestinationCursor;
-                }
+                // Including enterprise result starting from N.
+                final Cursor enterpriseFilterDestinationCursor = ContactUtil
+                        .filterDestinationEnterprise(getContext(), searchText)
+                        .performSynchronousQuery();
+                cursorResult.enterpriseCursor = enterpriseFilterDestinationCursor;
                 return cursorResult;
             }
         }

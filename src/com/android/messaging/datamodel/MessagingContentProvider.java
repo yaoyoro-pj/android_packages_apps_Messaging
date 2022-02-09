@@ -455,11 +455,7 @@ public class MessagingContentProvider extends ContentProvider {
         // First dump out the default SMS app package name
         String defaultSmsApp = PhoneUtils.getDefault().getDefaultSmsApp();
         if (TextUtils.isEmpty(defaultSmsApp)) {
-            if (OsUtil.isAtLeastKLP()) {
-                defaultSmsApp = "None";
-            } else {
-                defaultSmsApp = "None (pre-Kitkat)";
-            }
+            defaultSmsApp = "None";
         }
         writer.println("Default SMS app: " + defaultSmsApp);
         // Now dump logs

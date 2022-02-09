@@ -97,6 +97,6 @@ public class ViewPagerTabStrip extends LinearLayout {
     }
 
     private boolean isRtl() {
-        return OsUtil.isAtLeastJB_MR2() ? getLayoutDirection() == View.LAYOUT_DIRECTION_RTL : false;
+        return getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 }

@@ -118,9 +118,7 @@ public class BugleApplication extends Application implements UncaughtExceptionHa
         // Fixup messages in flight if we crashed and send any pending
         dataModel.onApplicationCreated();
         // Register carrier config change receiver
-        if (OsUtil.isAtLeastM()) {
-            registerCarrierConfigChangeReceiver(context);
-        }
+        registerCarrierConfigChangeReceiver(context);
 
         Trace.endSection();
     }

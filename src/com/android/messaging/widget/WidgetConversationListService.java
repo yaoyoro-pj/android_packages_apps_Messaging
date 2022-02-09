@@ -127,19 +127,14 @@ public class WidgetConversationListService extends RemoteViewsService {
                 remoteViews.setOnClickFillInIntent(R.id.widget_conversation_list_item, intent);
 
                 // Avatar
-                boolean includeAvatar;
-                if (OsUtil.isAtLeastJB()) {
-                    final Bundle options = mAppWidgetManager.getAppWidgetOptions(mAppWidgetId);
-                    if (LogUtil.isLoggable(TAG, LogUtil.VERBOSE)) {
-                        LogUtil.v(TAG, "getViewAt BugleWidgetProvider.WIDGET_SIZE_KEY: " +
-                                options.getInt(BugleWidgetProvider.WIDGET_SIZE_KEY));
-                    }
-
-                    includeAvatar = options.getInt(BugleWidgetProvider.WIDGET_SIZE_KEY) ==
-                            BugleWidgetProvider.SIZE_LARGE;
-                } else {
-                    includeAvatar = true;;
+                final Bundle options = mAppWidgetManager.getAppWidgetOptions(mAppWidgetId);
+                if (LogUtil.isLoggable(TAG, LogUtil.VERBOSE)) {
+                    LogUtil.v(TAG, "getViewAt BugleWidgetProvider.WIDGET_SIZE_KEY: " +
+                            options.getInt(BugleWidgetProvider.WIDGET_SIZE_KEY));
                 }
+
+                boolean includeAvatar = options.getInt(BugleWidgetProvider.WIDGET_SIZE_KEY) ==
+                        BugleWidgetProvider.SIZE_LARGE;
 
                 // Show the avatar when grande size, otherwise hide it.
                 remoteViews.setViewVisibility(R.id.avatarView, includeAvatar ?

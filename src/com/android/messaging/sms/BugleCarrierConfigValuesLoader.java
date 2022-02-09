@@ -92,12 +92,9 @@ public class BugleCarrierConfigValuesLoader implements CarrierConfigValuesLoader
     private String loadLocked(final int subId, final Bundle values) {
         // Load from resources in earlier platform
         loadFromResources(subId, values);
-        if (OsUtil.isAtLeastL()) {
-            // Load from system to override if system API exists
-            loadFromSystem(subId, values);
-            return "resources+system";
-        }
-        return "resources";
+        // Load from system to override if system API exists
+        loadFromSystem(subId, values);
+        return "resources+system";
     }
 
     /**
@@ -157,9 +154,6 @@ public class BugleCarrierConfigValuesLoader implements CarrierConfigValuesLoader
      * @return the sub-dependent Context
      */
     private static Context getSubDepContext(final Context context, final int subId) {
-        if (!OsUtil.isAtLeastL_MR1()) {
-            return context;
-        }
         final int[] mccMnc = PhoneUtils.get(subId).getMccMnc();
         final int mcc = mccMnc[0];
         final int mnc = mccMnc[1];

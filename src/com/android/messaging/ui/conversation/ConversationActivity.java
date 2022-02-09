@@ -348,11 +348,7 @@ public class ConversationActivity extends BugleActionBarActivity
     public void onFinishCurrentConversation() {
         // Simply finish the current activity. The current design is to leave any empty
         // conversations as is.
-        if (OsUtil.isAtLeastL()) {
-            finishAfterTransition();
-        } else {
-            finish();
-        }
+        finishAfterTransition();
     }
 
     @Override

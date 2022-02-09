@@ -34,14 +34,12 @@ import com.android.messaging.util.OsUtil;
 public class SimIconView extends ContactIconView {
     public SimIconView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        if (OsUtil.isAtLeastL()) {
-            setOutlineProvider(new ViewOutlineProvider() {
-                @Override
-                public void getOutline(View v, Outline outline) {
-                    outline.setOval(0, 0, v.getWidth(), v.getHeight());
-                }
-            });
-        }
+        setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View v, Outline outline) {
+                outline.setOval(0, 0, v.getWidth(), v.getHeight());
+            }
+        });
     }
 
     @Override

@@ -354,22 +354,14 @@ public class SnackBarManager {
     private int getScreenBottomOffset(final SnackBar snackBar) {
         final WindowManager windowManager = getWindowManager(snackBar.getContext());
         final DisplayMetrics displayMetrics = new DisplayMetrics();
-        if (OsUtil.isAtLeastL()) {
-            windowManager.getDefaultDisplay().getRealMetrics(displayMetrics);
-        } else {
-            windowManager.getDefaultDisplay().getMetrics(displayMetrics);
-        }
+        windowManager.getDefaultDisplay().getRealMetrics(displayMetrics);
         final int screenHeight = displayMetrics.heightPixels;
 
-        if (OsUtil.isAtLeastL()) {
-            // In L, the navigation bar is included in the space for the popup window, so we have to
-            // offset by the size of the navigation bar
-            final Rect displayRect = new Rect();
-            snackBar.getParentView().getRootView().getWindowVisibleDisplayFrame(displayRect);
-            return screenHeight - displayRect.bottom;
-        }
-
-        return 0;
+        // In L, the navigation bar is included in the space for the popup window, so we have to
+        // offset by the size of the navigation bar
+        final Rect displayRect = new Rect();
+        snackBar.getParentView().getRootView().getWindowVisibleDisplayFrame(displayRect);
+        return screenHeight - displayRect.bottom;
     }
 
     private int getRelativeOffset(final SnackBar snackBar) {

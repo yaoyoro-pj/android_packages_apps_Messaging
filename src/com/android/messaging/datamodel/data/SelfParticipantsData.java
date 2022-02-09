@@ -86,11 +86,8 @@ public class SelfParticipantsData {
      * Returns if a given self id represents the default self.
      */
     boolean isDefaultSelf(final String selfId) {
-        if (!OsUtil.isAtLeastL_MR1()) {
-            return true;
-        }
         final ParticipantData self = getSelfParticipantById(selfId);
-        return self == null ? false : self.getSubId() == ParticipantData.DEFAULT_SELF_SUB_ID;
+        return self != null && self.getSubId() == ParticipantData.DEFAULT_SELF_SUB_ID;
     }
 
     public int getSelfParticipantsCountExcludingDefault(final boolean activeOnly) {

@@ -151,36 +151,32 @@ public class ApplicationSettingsActivity extends BugleActionBarActivity {
         }
 
         private void updateSmsEnabledPreferences() {
-            if (!OsUtil.isAtLeastKLP()) {
-                getPreferenceScreen().removePreference(mSmsDisabledPreference);
-                getPreferenceScreen().removePreference(mSmsEnabledPreference);
-            } else {
-                final String defaultSmsAppLabel = getString(R.string.default_sms_app,
-                        PhoneUtils.getDefault().getDefaultSmsAppLabel());
-                boolean isSmsEnabledBeforeState;
-                boolean isSmsEnabledCurrentState;
-                if (PhoneUtils.getDefault().isDefaultSmsApp()) {
-                    if (getPreferenceScreen().findPreference(mSmsEnabledPrefKey) == null) {
-                        getPreferenceScreen().addPreference(mSmsEnabledPreference);
-                        isSmsEnabledBeforeState = false;
-                    } else {
-                        isSmsEnabledBeforeState = true;
-                    }
-                    isSmsEnabledCurrentState = true;
-                    getPreferenceScreen().removePreference(mSmsDisabledPreference);
-                    mSmsEnabledPreference.setSummary(defaultSmsAppLabel);
+            final String defaultSmsAppLabel = getString(R.string.default_sms_app,
+                    PhoneUtils.getDefault().getDefaultSmsAppLabel());
+            boolean isSmsEnabledBeforeState;
+            boolean isSmsEnabledCurrentState;
+            if (PhoneUtils.getDefault().isDefaultSmsApp()) {
+                if (getPreferenceScreen().findPreference(mSmsEnabledPrefKey) == null) {
+                    getPreferenceScreen().addPreference(mSmsEnabledPreference);
+                    isSmsEnabledBeforeState = false;
                 } else {
-                    if (getPreferenceScreen().findPreference(mSmsDisabledPrefKey) == null) {
-                        getPreferenceScreen().addPreference(mSmsDisabledPreference);
-                        isSmsEnabledBeforeState = true;
-                    } else {
-                        isSmsEnabledBeforeState = false;
-                    }
-                    isSmsEnabledCurrentState = false;
-                    getPreferenceScreen().removePreference(mSmsEnabledPreference);
-                    mSmsDisabledPreference.setSummary(defaultSmsAppLabel);
+                    isSmsEnabledBeforeState = true;
                 }
+                isSmsEnabledCurrentState = true;
+                getPreferenceScreen().removePreference(mSmsDisabledPreference);
+                mSmsEnabledPreference.setSummary(defaultSmsAppLabel);
+            } else {
+                if (getPreferenceScreen().findPreference(mSmsDisabledPrefKey) == null) {
+                    getPreferenceScreen().addPreference(mSmsDisabledPreference);
+                    isSmsEnabledBeforeState = true;
+                } else {
+                    isSmsEnabledBeforeState = false;
+                }
+                isSmsEnabledCurrentState = false;
+                getPreferenceScreen().removePreference(mSmsEnabledPreference);
+                mSmsDisabledPreference.setSummary(defaultSmsAppLabel);
             }
+
             mIsSmsPreferenceClicked = false;
         }
 

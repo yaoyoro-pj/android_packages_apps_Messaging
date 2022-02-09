@@ -74,13 +74,11 @@ public class BugleUserAgentInfoLoader implements UserAgentInfoLoader {
     }
 
     private void loadLocked() {
-        if (OsUtil.isAtLeastKLP()) {
-            // load the MMS User agent and UaProfUrl from TelephonyManager APIs
-            final TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
-                    Context.TELEPHONY_SERVICE);
-            mUserAgent = telephonyManager.getMmsUserAgent();
-            mUAProfUrl = telephonyManager.getMmsUAProfUrl();
-        }
+        // load the MMS User agent and UaProfUrl from TelephonyManager APIs
+        final TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
+                Context.TELEPHONY_SERVICE);
+        mUserAgent = telephonyManager.getMmsUserAgent();
+        mUAProfUrl = telephonyManager.getMmsUAProfUrl();
         // if user agent string isn't set, use the format "Bugle/<app_version>".
         if (TextUtils.isEmpty(mUserAgent)) {
             final String simpleVersionName = VersionUtil.getInstance(mContext).getSimpleName();

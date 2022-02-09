@@ -202,7 +202,7 @@ public class MediaPickerPanel extends ViewGroup {
     private int getDesiredHeight() {
         if (mFullScreen) {
             int fullHeight = getContext().getResources().getDisplayMetrics().heightPixels;
-            if (OsUtil.isAtLeastKLP() && isAttachedToWindow()) {
+            if (isAttachedToWindow()) {
                 // When we're attached to the window, we can get an accurate height, not necessary
                 // on older API level devices because they don't include the action bar height
                 View composeContainer =

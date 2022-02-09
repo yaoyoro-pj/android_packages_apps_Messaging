@@ -69,13 +69,9 @@ public class ViewGroupItemVerticalExplodeAnimation {
      */
     public static void startAnimationForView(final ViewGroup container, final View viewToAnimate,
             final View animationStagingView, final boolean snapshotView, final int duration) {
-        if (OsUtil.isAtLeastJB_MR2() && (viewToAnimate.getContext() instanceof Activity)) {
+        if (viewToAnimate.getContext() instanceof Activity) {
             new ViewExplodeAnimationJellyBeanMR2(viewToAnimate, container, snapshotView, duration)
                 .startAnimation();
-        } else {
-            // Pre JB_MR2, this animation can cause rendering failures which causes the framework
-            // to fall back to software rendering where camera preview isn't supported (b/18264647)
-            // just skip the animation to avoid this case.
         }
     }
 

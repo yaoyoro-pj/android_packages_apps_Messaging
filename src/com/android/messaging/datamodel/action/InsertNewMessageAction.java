@@ -225,8 +225,7 @@ public class InsertNewMessageAction extends Action implements Parcelable {
             // to bind the message to the system default subscription if it's unbound.
             final ParticipantData unboundSelf = BugleDatabaseOperations.getExistingParticipant(
                     db, selfId);
-            if (unboundSelf.getSubId() == ParticipantData.DEFAULT_SELF_SUB_ID
-                    && OsUtil.isAtLeastL_MR1()) {
+            if (unboundSelf.getSubId() == ParticipantData.DEFAULT_SELF_SUB_ID) {
                 final int defaultSubId = PhoneUtils.getDefault().getDefaultSmsSubscriptionId();
                 self = BugleDatabaseOperations.getOrCreateSelf(db, defaultSubId);
             } else {

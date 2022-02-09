@@ -503,10 +503,6 @@ public class ContactPickerFragment extends Fragment implements ContactPickerData
      * @param show whether the contact lists are to be shown or hidden.
      */
     private void startExplodeTransitionForContactLists(final boolean show) {
-        if (!OsUtil.isAtLeastL()) {
-            // Explode animation is not supported pre-L.
-            return;
-        }
         final Explode transition = new Explode();
         final Rect epicenter = mPendingExplodeView == null ? null :
             UiUtils.getMeasuredBoundsOnScreen(mPendingExplodeView);
@@ -533,10 +529,6 @@ public class ContactPickerFragment extends Fragment implements ContactPickerData
      * the transition manager for pending explode transition.
      */
     private void toggleContactListItemsVisibilityForPendingTransition(final boolean show) {
-        if (!OsUtil.isAtLeastL()) {
-            // Explode animation is not supported pre-L.
-            return;
-        }
         mAllContactsListViewHolder.toggleVisibilityForPendingTransition(show, mPendingExplodeView);
         mFrequentContactsListViewHolder.toggleVisibilityForPendingTransition(show,
                 mPendingExplodeView);

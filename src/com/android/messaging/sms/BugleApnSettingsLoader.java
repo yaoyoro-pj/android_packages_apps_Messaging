@@ -383,14 +383,14 @@ public class BugleApnSettingsLoader implements ApnSettingsLoader {
      */
     private void loadFromSystem(final int subId, final String apnName, final List<Apn> apns) {
         Uri uri;
-        if (OsUtil.isAtLeastL_MR1() && subId != MmsManager.DEFAULT_SUB_ID) {
+        if (subId != MmsManager.DEFAULT_SUB_ID) {
             uri = Uri.withAppendedPath(Telephony.Carriers.CONTENT_URI, "/subId/" + subId);
         } else {
             uri = Telephony.Carriers.CONTENT_URI;
         }
-        Cursor cursor = null;
+        Cursor cursor;
         try {
-            for (; ; ) {
+            for (;;) {
                 // Try different combinations of queries. Some would work on some platforms.
                 // So we query each combination until we find one returns non-empty result.
                 cursor = querySystem(uri, true/*checkCurrent*/, apnName);

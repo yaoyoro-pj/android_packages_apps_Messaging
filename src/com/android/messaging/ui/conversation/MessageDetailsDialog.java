@@ -356,9 +356,7 @@ public class MessageDetailsDialog {
 
     private static void appendSimInfo(final Resources res,
             final ParticipantData self, final StringBuilder outString) {
-        if (!OsUtil.isAtLeastL_MR1()
-                || self == null
-                || PhoneUtils.getDefault().getActiveSubscriptionCount() < 2) {
+        if (self == null || PhoneUtils.getDefault().getActiveSubscriptionCount() < 2) {
             return;
         }
         // The appended SIM info would look like:

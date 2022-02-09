@@ -595,7 +595,7 @@ public class ConversationData extends BindableData {
         Assert.isTrue(TextUtils.equals(mConversationId, message.getConversationId()));
         Assert.isTrue(binding.getData() == this);
 
-        if (!OsUtil.isAtLeastL_MR1() || message.getSelfId() == null) {
+        if (message.getSelfId() == null) {
             InsertNewMessageAction.insertNewMessage(message);
         } else {
             final int systemDefaultSubId = PhoneUtils.getDefault().getDefaultSmsSubscriptionId();
@@ -767,8 +767,7 @@ public class ConversationData extends BindableData {
         // 1. Framework has MSIM support AND
         // 2. The device has had multiple *active* subscriptions. AND
         // 3. The message's subscription is active.
-        if (OsUtil.isAtLeastL_MR1() &&
-                selfParticipantsData.getSelfParticipantsCountExcludingDefault(true) > 1) {
+        if (selfParticipantsData.getSelfParticipantsCountExcludingDefault(true) > 1) {
             return subscriptionListData.getActiveSubscriptionEntryBySelfId(selfParticipantId,
                     excludeDefault);
         }

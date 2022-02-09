@@ -1481,15 +1481,8 @@ public class PduPersister {
         }
         // Record whether this mms message is a simple plain text or not. This is a hint for the
         // UI.
-        if (OsUtil.isAtLeastJB_MR1()) {
-            values.put(Mms.TEXT_ONLY, textOnly ? 1 : 0);
-        }
-
-        if (OsUtil.isAtLeastL_MR1()) {
-            values.put(Mms.SUBSCRIPTION_ID, subId);
-        } else {
-            Assert.equals(ParticipantData.DEFAULT_SELF_SUB_ID, subId);
-        }
+        values.put(Mms.TEXT_ONLY, textOnly ? 1 : 0);
+        values.put(Mms.SUBSCRIPTION_ID, subId);
 
         Uri res = null;
         if (existingUri) {

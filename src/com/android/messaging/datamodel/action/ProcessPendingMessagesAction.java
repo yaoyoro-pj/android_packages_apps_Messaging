@@ -356,12 +356,10 @@ public class ProcessPendingMessagesAction extends Action implements Parcelable {
 
             // Prior to L_MR1, isActiveSubscription is true always
             boolean isActiveSubscription = true;
-            if (OsUtil.isAtLeastL_MR1()) {
-                final ParticipantData messageSelf =
-                        BugleDatabaseOperations.getExistingParticipant(db, selfId);
-                if (messageSelf == null || !messageSelf.isActiveSubscription()) {
-                    isActiveSubscription = false;
-                }
+            final ParticipantData messageSelf =
+                    BugleDatabaseOperations.getExistingParticipant(db, selfId);
+            if (messageSelf == null || !messageSelf.isActiveSubscription()) {
+                isActiveSubscription = false;
             }
             while (cursor.moveToNext()) {
                 final MessageData message = new MessageData();

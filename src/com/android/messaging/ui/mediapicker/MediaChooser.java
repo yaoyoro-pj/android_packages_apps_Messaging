@@ -107,8 +107,7 @@ abstract class MediaChooser extends BasePagerViewHolder
     }
 
     protected FragmentManager getFragmentManager() {
-        return OsUtil.isAtLeastJB_MR1() ? mMediaPicker.getChildFragmentManager() :
-                mMediaPicker.getFragmentManager();
+        return mMediaPicker.getChildFragmentManager();
     }
     protected LayoutInflater getLayoutInflater() {
         return LayoutInflater.from(getContext());

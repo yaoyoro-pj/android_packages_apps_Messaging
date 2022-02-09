@@ -120,13 +120,6 @@ public class DatabaseMessages {
                 if (!MmsUtils.hasSmsDateSentColumn()) {
                     projection[INDEX_DATE_SENT] = Sms.DATE;
                 }
-                if (!OsUtil.isAtLeastL_MR1()) {
-                    Assert.equals(INDEX_SUB_ID, projection.length - 1);
-                    String[] withoutSubId = new String[projection.length - 1];
-                    System.arraycopy(projection, 0, withoutSubId, 0, withoutSubId.length);
-                    projection = withoutSubId;
-                }
-
                 sProjection = projection;
             }
 
@@ -306,13 +299,6 @@ public class DatabaseMessages {
                     Mms.RETRIEVE_STATUS,
                     Mms.SUBSCRIPTION_ID,
                 };
-
-                if (!OsUtil.isAtLeastL_MR1()) {
-                    Assert.equals(INDEX_SUB_ID, projection.length - 1);
-                    String[] withoutSubId = new String[projection.length - 1];
-                    System.arraycopy(projection, 0, withoutSubId, 0, withoutSubId.length);
-                    projection = withoutSubId;
-                }
 
                 sProjection = projection;
             }

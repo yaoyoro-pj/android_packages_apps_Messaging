@@ -79,9 +79,6 @@ public class DebugMmsConfigFragment extends Fragment {
     }
 
     public static Integer[] getActiveSubIds() {
-        if (!OsUtil.isAtLeastL_MR1()) {
-            return new Integer[] { ParticipantData.DEFAULT_SELF_SUB_ID };
-        }
         final List<SubscriptionInfo> subRecords =
                 PhoneUtils.getDefault().toLMr1().getActiveSubscriptionInfoList();
         if (subRecords == null) {

@@ -27,11 +27,7 @@ import com.android.messaging.util.OsUtil;
  */
 public class RectEvaluatorCompat implements TypeEvaluator<Rect> {
     public static TypeEvaluator<Rect> create() {
-        if (OsUtil.isAtLeastJB_MR2()) {
-            return new RectEvaluator();
-        } else {
-            return new RectEvaluatorCompat();
-        }
+        return new RectEvaluator();
     }
 
     @Override

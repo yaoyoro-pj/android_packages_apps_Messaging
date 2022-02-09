@@ -151,12 +151,8 @@ public class ApnSettingsActivity extends BugleActionBarActivity {
 
             mDatabase = ApnDatabase.getApnDatabase().getWritableDatabase();
 
-            if (OsUtil.isAtLeastL()) {
-                mUm = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
-                if (!mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-                    setHasOptionsMenu(true);
-                }
-            } else {
+            mUm = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
+            if (!mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 setHasOptionsMenu(true);
             }
         }
@@ -172,8 +168,7 @@ public class ApnSettingsActivity extends BugleActionBarActivity {
                 lv.setEmptyView(empty);
             }
 
-            if (OsUtil.isAtLeastL() &&
-                    mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            if (mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 mUnavailable = true;
                 setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getActivity()));
                 return;

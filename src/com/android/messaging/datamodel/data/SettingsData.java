@@ -200,7 +200,7 @@ public class SettingsData extends BindableData implements
         // platorm is at least L-MR1 and there are multiple active SIMs.
         final int activeSubCountExcludingDefault =
                 mSelfParticipantsData.getSelfParticipantsCountExcludingDefault(true);
-        if (OsUtil.isAtLeastL_MR1() && activeSubCountExcludingDefault > 0) {
+        if (activeSubCountExcludingDefault > 0) {
             for (ParticipantData self : selfs) {
                 if (!self.isDefaultSelf()) {
                     if (activeSubCountExcludingDefault > 1) {

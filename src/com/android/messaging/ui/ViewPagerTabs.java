@@ -130,14 +130,12 @@ public class ViewPagerTabs extends HorizontalScrollView implements ViewPager.OnP
         a.recycle();
 
         // enable shadow casting from view bounds
-        if (OsUtil.isAtLeastL()) {
-            setOutlineProvider(new ViewOutlineProvider() {
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    outline.setRect(0, 0, view.getWidth(), view.getHeight());
-                }
-            });
-        }
+        setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRect(0, 0, view.getWidth(), view.getHeight());
+            }
+        });
     }
 
     public void setViewPager(ViewPager viewPager) {
@@ -223,8 +221,8 @@ public class ViewPagerTabs extends HorizontalScrollView implements ViewPager.OnP
     }
 
     private int getRtlPosition(int position) {
-        if (OsUtil.isAtLeastJB_MR2() && Factory.get().getApplicationContext().getResources()
-                .getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+        if (Factory.get().getApplicationContext().getResources().getConfiguration()
+                .getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
             return mTabStrip.getChildCount() - 1 - position;
         }
         return position;

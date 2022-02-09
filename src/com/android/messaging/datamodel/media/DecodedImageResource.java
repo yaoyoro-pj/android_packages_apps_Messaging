@@ -109,11 +109,7 @@ public class DecodedImageResource extends ImageResource {
         acquireLock();
         try {
             Assert.notNull(mBitmap);
-            if (OsUtil.isAtLeastKLP()) {
-                return mBitmap.getAllocationByteCount();
-            } else {
-                return mBitmap.getRowBytes() * mBitmap.getHeight();
-            }
+            return mBitmap.getAllocationByteCount();
         } finally {
             releaseLock();
         }

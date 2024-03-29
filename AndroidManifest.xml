@@ -234,7 +234,7 @@
             android:label="@string/people_and_options_activity_title"
             android:parentActivityName="com.android.messaging.ui.conversation.ConversationActivity"
             android:screenOrientation="user"
-            android:theme="@style/BugleTheme" />
+            android:theme="@style/BugleTheme.PeopleAndOptionsActivity" />
 
         <!-- License -->
         <activity

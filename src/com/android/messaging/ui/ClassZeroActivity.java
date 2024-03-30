@@ -18,7 +18,6 @@
 package com.android.messaging.ui;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -33,11 +32,14 @@ import android.util.Log;
 import android.view.Window;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import com.android.messaging.R;
 import com.android.messaging.datamodel.action.ReceiveSmsMessageAction;
 import com.android.messaging.datamodel.BugleNotifications;
 import com.android.messaging.util.Assert;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -141,7 +143,7 @@ public class ClassZeroActivity extends Activity {
         mMessageValues = messageValues;
         final String message = messageValues.getAsString(Sms.BODY);;
 
-        mDialog = new AlertDialog.Builder(this).setMessage(message)
+        mDialog = new MaterialAlertDialogBuilder(this).setMessage(message)
             .setPositiveButton(R.string.save, mSaveListener)
             .setNegativeButton(android.R.string.cancel, mCancelListener)
             .setTitle(R.string.class_0_message_activity)

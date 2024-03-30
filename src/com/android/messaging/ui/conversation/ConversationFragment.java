@@ -108,6 +108,7 @@ import com.android.messaging.util.PhoneUtils;
 import com.android.messaging.util.TextUtil;
 import com.android.messaging.util.UiUtils;
 import com.android.messaging.util.UriUtil;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -810,7 +811,7 @@ public class ConversationFragment extends Fragment implements ConversationDataLi
             return true;
         } else if (itemId == R.id.action_delete) {
             if (isReadyForDeleteAction()) {
-                new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme)
+                new MaterialAlertDialogBuilder(getActivity())
                         .setTitle(getResources().getQuantityString(
                                 R.plurals.delete_conversations_confirmation_dialog_title, 1))
                         .setPositiveButton(R.string.delete_conversation_confirmation_button,
@@ -1111,7 +1112,7 @@ public class ConversationFragment extends Fragment implements ConversationDataLi
 
     void deleteMessage(final String messageId) {
         if (isReadyForDeleteAction()) {
-            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+            final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
                     .setTitle(R.string.delete_message_confirmation_dialog_title)
                     .setMessage(R.string.delete_message_confirmation_dialog_text)
                     .setPositiveButton(R.string.delete_message_confirmation_button,
@@ -1432,8 +1433,8 @@ public class ConversationFragment extends Fragment implements ConversationDataLi
     public void warnOfExceedingMessageLimit(final boolean sending,
             final ComposeMessageView composeMessageView, final String conversationId,
             final Activity activity, final boolean tooManyVideos) {
-        final AlertDialog.Builder builder =
-                new AlertDialog.Builder(activity)
+        final MaterialAlertDialogBuilder builder =
+                new MaterialAlertDialogBuilder(activity)
                     .setTitle(R.string.mms_attachment_limit_reached);
 
         if (sending) {

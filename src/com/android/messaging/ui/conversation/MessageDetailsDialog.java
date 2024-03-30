@@ -17,7 +17,6 @@
 
 package com.android.messaging.ui.conversation;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -38,6 +37,7 @@ import com.android.messaging.util.Assert;
 import com.android.messaging.util.Assert.DoesNotRunOnMainThread;
 import com.android.messaging.util.Dates;
 import com.android.messaging.util.PhoneUtils;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -70,7 +70,7 @@ public class MessageDetailsDialog {
 
     private static void showDialog(final Context context, String messageDetails) {
         if (!TextUtils.isEmpty(messageDetails)) {
-            new AlertDialog.Builder(context, R.style.AlertDialogTheme)
+            new MaterialAlertDialogBuilder(context)
                     .setTitle(R.string.message_details_title)
                     .setMessage(messageDetails)
                     .setCancelable(true)

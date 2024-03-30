@@ -18,7 +18,6 @@ package com.android.messaging.ui.conversationlist;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -42,6 +41,8 @@ import com.android.messaging.datamodel.data.ConversationListItemData;
 import com.android.messaging.datamodel.data.ConversationListData.ConversationListDataListener;
 import com.android.messaging.ui.ListEmptyView;
 import com.android.messaging.datamodel.DataModel;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 /**
  * Allow user to pick conversation to which an incoming attachment will be shared.
@@ -90,7 +91,7 @@ public class ShareIntentFragment extends DialogFragment implements ConversationL
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
-        final Builder dialogBuilder = new AlertDialog.Builder(activity)
+        final MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(activity)
                 .setView(view)
                 .setTitle(R.string.share_intent_activity_label);
 

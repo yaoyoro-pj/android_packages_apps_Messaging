@@ -17,7 +17,6 @@
 package com.android.messaging.ui.conversationsettings;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -52,6 +51,8 @@ import com.android.messaging.ui.PersonItemView;
 import com.android.messaging.ui.conversation.ConversationActivity;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.NotificationsUtil;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,7 +147,7 @@ public class PeopleAndOptionsFragment extends Fragment
             }
             final Resources res = getResources();
             final Activity activity = getActivity();
-            new AlertDialog.Builder(activity, R.style.AlertDialogTheme)
+            new MaterialAlertDialogBuilder(activity)
                     .setTitle(res.getString(R.string.block_confirmation_title,
                             item.getOtherParticipant().getDisplayDestination()))
                     .setMessage(res.getString(R.string.block_confirmation_message))

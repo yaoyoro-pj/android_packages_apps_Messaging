@@ -24,8 +24,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 
@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * Displays a SIM selector above the compose message view and overlays the message list.
  */
-public class SimSelectorView extends FrameLayout implements SimSelectorItemView.HostInterface {
+public class SimSelectorView extends RelativeLayout implements SimSelectorItemView.HostInterface {
     public interface SimSelectorViewListener {
         void onSimItemClicked(SubscriptionListEntry item);
         void onSimSelectorVisibilityChanged(boolean visible);
@@ -69,6 +69,8 @@ public class SimSelectorView extends FrameLayout implements SimSelectorItemView.
 
     public void bind(final SubscriptionListData data) {
         mAdapter.bindData(data.getActiveSubscriptionEntriesExcludingDefault());
+        updateLayoutWidth();
+        mSimListView.setElevation(3.0f);
     }
 
     public void setItemLayoutId(final int layoutId) {
@@ -117,6 +119,24 @@ public class SimSelectorView extends FrameLayout implements SimSelectorItemView.
                 translateAnimation.setDuration(UiUtils.REVEAL_ANIMATION_DURATION);
                 mSimListView.startAnimation(translateAnimation);
             }
+        }
+    }
+
+    private void updateLayoutWidth() {
+        int maxWidth = 0;
+
+        if (mAdapter != null) {
+            int count = mAdapter.getCount();
+            View view;
+            for (int i = 0; i < count; i++) {
+                view = mAdapter.getView(i, null, mSimListView);
+                view.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+                        MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+                if (view.getMeasuredWidth() > maxWidth) {
+                    maxWidth = view.getMeasuredWidth();
+                }
+            }
+            mSimListView.getLayoutParams().width = maxWidth;
         }
     }
 

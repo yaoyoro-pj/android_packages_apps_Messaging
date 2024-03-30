@@ -737,7 +737,8 @@ public class BugleNotifications {
             }
 
             addDownloadMmsAction(notifBuilder, wearableExtender, notificationState);
-            addWearableVoiceReplyAction(notifBuilder, wearableExtender, notificationState);
+            addReplyAction(notifBuilder, wearableExtender, notificationState);
+            addReadAction(notifBuilder, wearableExtender, notificationState);
         }
 
         // Apply the wearable options and build & post the notification
@@ -761,7 +762,7 @@ public class BugleNotifications {
         }
     }
 
-    private static void addWearableVoiceReplyAction(final NotificationCompat.Builder notifBuilder,
+    private static void addReplyAction(final NotificationCompat.Builder notifBuilder,
             final WearableExtender wearableExtender, final NotificationState notificationState) {
         if (!(notificationState instanceof MultiMessageNotificationState)) {
             return;
@@ -805,6 +806,19 @@ public class BugleNotifications {
         remoteInputBuilder.setChoices(choices);
         wearActionBuilder.addRemoteInput(remoteInputBuilder.build());
         wearableExtender.addAction(wearActionBuilder.build());
+    }
+
+    private static void addReadAction(final NotificationCompat.Builder notifBuilder,
+            final WearableExtender wearableExtender, final NotificationState notificationState) {
+        final Context context = Factory.get().getApplicationContext();
+        final PendingIntent readPendingIntent = notificationState.getReadIntent();
+        final NotificationCompat.Action.Builder readActionBuilder =
+                new NotificationCompat.Action.Builder(R.drawable.ic_wear_read,
+                        context.getString(R.string.notification_mark_as_read), readPendingIntent);
+        notifBuilder.addAction(readActionBuilder.build());
+
+        // Support the action on a wearable device as well
+        wearableExtender.addAction(readActionBuilder.build());
     }
 
     private static void addDownloadMmsAction(final NotificationCompat.Builder notifBuilder,

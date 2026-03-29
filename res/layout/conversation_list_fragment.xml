@@ -48,6 +48,8 @@
         android:elevation="@dimen/fab_elevation"
         android:src="@drawable/ic_twotone_sms_24"
         android:stateListAnimator="@animator/fab_anim"
-        android:contentDescription="@string/start_new_conversation"/>
+        android:contentDescription="@string/start_new_conversation"
+        app:backgroundTint="@color/md_fab_bg_tint"
+        app:tint="@color/md_fab_ic_tint"/>
 
 </FrameLayout>

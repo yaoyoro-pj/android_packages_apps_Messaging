@@ -144,6 +144,9 @@
     <color name="fab_pressed_color">@*android:color/primary_device_default_light</color>
     <color name="fab_ripple">#40ffffff</color>
 
+    <color name="md_fab_bg_tint">@android:color/system_accent1_100</color>
+    <color name="md_fab_ic_tint">@color/lineage_accent</color>
+
     <color name="message_body_size_text_color">#555555</color>
     <color name="mms_indicator_color">#681faf</color>
     <color name="list_empty_text">#6d6d6d</color>

@@ -16,15 +16,18 @@
  */
 package com.android.messaging.ui.appsettings;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.android.messaging.R;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.BuglePrefs;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 /**
  * Displays an on/off switch for group MMS setting for a given subscription.
@@ -48,7 +51,7 @@ public class GroupMmsSettingDialog {
 
     private void show() {
         Assert.isNull(mDialog);
-        mDialog = new AlertDialog.Builder(mContext, R.style.AlertDialogTheme)
+        mDialog = new MaterialAlertDialogBuilder(mContext)
                 .setView(createView())
                 .setTitle(R.string.group_mms_pref_title)
                 .setNegativeButton(android.R.string.cancel, null)

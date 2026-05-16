@@ -1,34 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2026 Yaoyoro Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-  <group>
-    <clip-path
-        android:pathData="M0,0h108v108h-108z"/>
-    <path
-        android:pathData="M54,66C60.75,66 66,63.627 66,57C66,47.373 60.75,42 54,42C47.25,42 42,47.373 42,57C42,63.627 47.25,66 54,66ZM54,57.5C57.057,57.5 60.055,56.942 62,56C61.125,58.603 59.333,62 54,62C48.667,62 46.875,58.603 46,56C47.945,56.942 50.943,57.5 54,57.5Z"
-        android:fillColor="#143721"
-        android:fillType="evenOdd"/>
-    <path
-        android:pathData="M28.54,28.54m-72,0a72,72 0,1 1,144 0a72,72 0,1 1,-144 0"
-        android:fillAlpha="0.6">
-      <aapt:attr name="android:fillColor">
-        <gradient
-            android:gradientRadius="72"
-            android:centerX="28.54"
-            android:centerY="28.54"
-            android:type="radial">
-          <item android:offset="0" android:color="#19FFFFFF"/>
-          <item android:offset="1" android:color="#00FFFFFF"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-  </group>
+  <path
+      android:pathData="M75,45.16L75,62.26C75,64.51 74.2,66.44 72.61,68.03C71.01,69.62 69.09,70.42 66.84,70.42C66.84,70.42 58.36,70.46 54,71.23C49.64,72 47.25,74.43 46.33,75.1C45.4,75.76 44.38,76.16 43.25,76.31L43.17,76.31C42.97,76.34 42.77,76.32 42.58,76.26C42.39,76.21 42.21,76.11 42.06,75.97C41.91,75.84 41.79,75.68 41.71,75.5C41.62,75.31 41.58,75.12 41.58,74.91L41.58,71.23C41.58,70.79 41.22,70.42 40.77,70.42L40.68,70.42C36.44,70.42 33,66.98 33,62.74L33,45.16C33,42.91 33.8,40.99 35.39,39.39C36.99,37.8 38.91,37 41.16,37L66.84,37C69.09,37 71.01,37.8 72.61,39.39C74.2,40.99 75,42.91 75,45.16L75,45.16Z"
+      android:fillColor="#FFFFFF"
+      android:fillType="evenOdd"/>
 </vector>

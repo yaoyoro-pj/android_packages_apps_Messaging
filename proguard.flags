@@ -15,12 +15,7 @@
 #
 # Keep enough data for stack traces
 -renamesourcefileattribute SourceFile
--keepattributes SourceFile,
-                LineNumberTable,
-                RuntimeVisibleAnnotations,
-                RuntimeVisibleParameterAnnotations,
-                RuntimeVisibleTypeAnnotations,
-                AnnotationDefault
+-keepattributes SourceFile,LineNumberTable,*Annotation*
 
 -keep class com.android.messaging.* { *; }
 -keep class com.android.messaging.*.* { *; }

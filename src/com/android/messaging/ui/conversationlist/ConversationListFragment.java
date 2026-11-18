@@ -55,7 +55,7 @@ import com.android.messaging.util.AccessibilityUtil;
 import com.android.messaging.util.ImeUtil;
 import com.android.messaging.util.LogUtil;
 import com.android.messaging.util.UiUtils;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +87,7 @@ public class ConversationListFragment extends Fragment implements ConversationLi
 
     private ConversationListFragmentHost mHost;
     private RecyclerView mRecyclerView;
-    private ExtendedFloatingActionButton mStartNewConversationButton;
+    private FloatingActionButton mStartNewConversationButton;
     private ListEmptyView mEmptyListMessageView;
     private ConversationListAdapter mAdapter;
 

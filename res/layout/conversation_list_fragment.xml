@@ -37,15 +37,15 @@
         android:visibility="gone"
         android:layout_marginBottom="@dimen/conversation_list_empty_text_bottom_margin" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        style="?attr/extendedFloatingActionButtonSmallStyle"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Widget.Material3.FloatingActionButton.Primary"
         android:id="@+id/start_new_conversation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="@string/start_chat"
-        app:icon="@drawable/ic_twotone_sms_24"
+        android:contentDescription="@string/start_chat"
+        android:src="@drawable/ic_twotone_sms_24"
         app:backgroundTint="@color/md_fab_bg_tint"
         app:tint="@color/md_fab_ic_tint"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
